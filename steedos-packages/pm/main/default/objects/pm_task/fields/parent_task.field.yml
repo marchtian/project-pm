@@ -1,0 +1,6 @@
+name: parent_task
+label: 父任务
+label_en: Parent Task
+type: lookup
+reference_to: pm_task
+indexed: true

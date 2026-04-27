@@ -1,0 +1,4 @@
+name: description
+label: 项目描述
+label_en: Description
+type: textarea

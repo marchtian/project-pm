@@ -1,0 +1,5 @@
+name: estimated_hours
+label: 预计工时
+label_en: Estimated Hours
+type: number
+scale: 2

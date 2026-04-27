@@ -1,0 +1,8 @@
+name: user
+label: 记录人
+label_en: User
+type: lookup
+reference_to: users
+required: true
+indexed: true
+sortable: true

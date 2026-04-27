@@ -1,0 +1,9 @@
+name: actual_hours
+label: 实际工时
+label_en: Actual Hours
+type: summary
+summary_object: pm_timesheet
+summary_field: hours
+summary_type: sum
+reference_to_field: task
+description: 自动汇总该任务下所有 pm_timesheet 工时

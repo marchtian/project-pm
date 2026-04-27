@@ -1,0 +1,6 @@
+name: pm_observer
+label: 项目观察者
+label_en: Project Observer
+license: free
+assigned_apps:
+  - pm_app

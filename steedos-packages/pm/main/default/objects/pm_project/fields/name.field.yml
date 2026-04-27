@@ -1,0 +1,8 @@
+name: name
+label: 项目名称
+label_en: Project Name
+type: text
+required: true
+searchable: true
+sortable: true
+index: true

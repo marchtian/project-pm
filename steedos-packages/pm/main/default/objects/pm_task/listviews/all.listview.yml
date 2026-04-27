@@ -1,0 +1,24 @@
+name: all
+label: 所有任务
+label_en: All Tasks
+columns:
+  - field: name
+    width: 240
+  - field: project
+    width: 180
+  - field: milestone
+    width: 160
+  - field: assignee
+    width: 120
+  - field: status
+    width: 100
+  - field: priority
+    width: 100
+  - field: start_date
+    width: 110
+  - field: due_date
+    width: 110
+filter_scope: space
+sort:
+  - field: due_date
+    order: asc

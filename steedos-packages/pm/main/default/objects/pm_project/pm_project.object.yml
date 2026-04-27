@@ -1,0 +1,23 @@
+name: pm_project
+label: 项目
+label_en: Project
+icon: work_order_item
+enable_search: true
+enable_files: true
+enable_tasks: false
+enable_notes: true
+enable_audit: true
+enable_share: true
+enable_instances: false
+enable_chatter: true
+enable_trash: true
+enable_workflow: false
+enable_api: true
+enable_enhanced_lookup: true
+
+list_view_id: all
+
+fields_serial_number: 100
+
+# 主字段：项目编号 code 通过 trigger 自动生成；name 为标题
+NAME_FIELD_KEY: name

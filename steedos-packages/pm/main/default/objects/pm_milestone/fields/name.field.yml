@@ -1,0 +1,7 @@
+name: name
+label: 里程碑名称
+label_en: Name
+type: text
+required: true
+searchable: true
+sortable: true

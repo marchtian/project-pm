@@ -1,0 +1,8 @@
+name: pm_project_tab
+label: 项目
+label_en: Projects
+type: object
+object: pm_project
+icon: work_order_item
+desktop: true
+mobile: true

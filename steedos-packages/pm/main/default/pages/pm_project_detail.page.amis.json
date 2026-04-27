@@ -1,0 +1,87 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "type": "steedos-record-service",
+      "objectApiName": "pm_project",
+      "id": "pm-project-record",
+      "body": [
+        { "type": "steedos-record-detail-header" },
+        {
+          "type": "tabs",
+          "className": "mt-4",
+          "tabs": [
+            {
+              "title": "概览",
+              "body": {
+                "type": "steedos-record-detail",
+                "objectApiName": "pm_project"
+              }
+            },
+            {
+              "title": "甘特图",
+              "body": {
+                "type": "pm-gantt",
+                "projectId": "${_id}"
+              }
+            },
+            {
+              "title": "里程碑",
+              "body": {
+                "type": "steedos-object-listview",
+                "objectApiName": "pm_milestone",
+                "filters": [["project", "=", "${_id}"]],
+                "listName": "all"
+              }
+            },
+            {
+              "title": "任务",
+              "body": {
+                "type": "steedos-object-listview",
+                "objectApiName": "pm_task",
+                "filters": [["project", "=", "${_id}"]],
+                "listName": "all"
+              }
+            },
+            {
+              "title": "成员",
+              "body": {
+                "type": "steedos-object-listview",
+                "objectApiName": "pm_member",
+                "filters": [["project", "=", "${_id}"]],
+                "listName": "all"
+              }
+            },
+            {
+              "title": "工时",
+              "body": {
+                "type": "steedos-object-listview",
+                "objectApiName": "pm_timesheet",
+                "filters": [["project", "=", "${_id}"]],
+                "listName": "all"
+              }
+            },
+            {
+              "title": "费用",
+              "body": {
+                "type": "steedos-object-listview",
+                "objectApiName": "pm_expense",
+                "filters": [["project", "=", "${_id}"]],
+                "listName": "all"
+              }
+            },
+            {
+              "title": "文档",
+              "body": {
+                "type": "steedos-object-listview",
+                "objectApiName": "pm_document",
+                "filters": [["project", "=", "${_id}"]],
+                "listName": "all"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

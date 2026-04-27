@@ -1,0 +1,5 @@
+name: join_date
+label: 加入日期
+label_en: Join Date
+type: date
+sortable: true

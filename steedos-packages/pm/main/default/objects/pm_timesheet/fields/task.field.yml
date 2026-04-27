@@ -1,0 +1,9 @@
+name: task
+label: 关联任务
+label_en: Task
+type: lookup
+reference_to: pm_task
+required: true
+indexed: true
+sortable: true
+is_name: true

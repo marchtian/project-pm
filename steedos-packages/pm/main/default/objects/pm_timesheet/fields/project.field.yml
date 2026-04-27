@@ -1,0 +1,7 @@
+name: project
+label: 关联项目
+label_en: Project
+type: lookup
+reference_to: pm_project
+indexed: true
+sortable: true

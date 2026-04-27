@@ -1,0 +1,6 @@
+name: assignee
+label: 负责人
+label_en: Assignee
+type: lookup
+reference_to: users
+indexed: true

@@ -1,0 +1,12 @@
+name: pm_project_detail
+label: 项目详情
+type: record
+object_name: pm_project
+render_engine: amis
+is_active: true
+locked: false
+pageAssignments:
+  - type: orgDefault
+    page: pm_project_detail
+    desktop: true
+    mobile: false

@@ -1,0 +1,7 @@
+{
+  "name": "@steedos-packages/pm",
+  "version": "0.0.1",
+  "description": "Project Management package for Steedos",
+  "main": "package.service.js",
+  "private": true
+}

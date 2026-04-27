@@ -1,0 +1,18 @@
+name: pm_app
+code: pm_app
+label: 项目管理
+label_en: Project Management
+description: 企业级项目管理系统
+icon_slds: work_order_item
+is_creator: true
+visible: true
+showSidebar: true
+mobile: true
+tabs:
+  - pm_project_tab
+  - pm_task_tab
+  - pm_milestone_tab
+  - pm_member_tab
+  - pm_timesheet_tab
+  - pm_expense_tab
+  - pm_document_tab

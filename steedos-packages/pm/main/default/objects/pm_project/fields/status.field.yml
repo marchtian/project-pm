@@ -1,0 +1,15 @@
+name: status
+label: 状态
+label_en: Status
+type: select
+required: true
+defaultValue: planning
+options:
+  - label: 规划中
+    value: planning
+  - label: 进行中
+    value: in_progress
+  - label: 已完成
+    value: completed
+  - label: 已关闭
+    value: closed

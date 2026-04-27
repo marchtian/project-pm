@@ -1,0 +1,18 @@
+name: priority
+label: 优先级
+label_en: Priority
+type: select
+defaultValue: medium
+options:
+  - label: 低
+    label_en: Low
+    value: low
+  - label: 中
+    label_en: Medium
+    value: medium
+  - label: 高
+    label_en: High
+    value: high
+  - label: 紧急
+    label_en: Urgent
+    value: urgent

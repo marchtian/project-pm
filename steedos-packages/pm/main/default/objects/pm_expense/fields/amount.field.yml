@@ -1,0 +1,7 @@
+name: amount
+label: 金额
+label_en: Amount
+type: currency
+required: true
+scale: 2
+sortable: true

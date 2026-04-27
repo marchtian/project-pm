@@ -1,0 +1,19 @@
+name: status
+label: 状态
+label_en: Status
+type: select
+required: true
+defaultValue: todo
+options:
+  - label: 待办
+    label_en: Todo
+    value: todo
+  - label: 进行中
+    label_en: In Progress
+    value: in_progress
+  - label: 已完成
+    label_en: Completed
+    value: completed
+  - label: 已取消
+    label_en: Cancelled
+    value: cancelled

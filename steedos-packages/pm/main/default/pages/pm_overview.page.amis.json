@@ -1,0 +1,132 @@
+{
+  "type": "page",
+  "title": "项目仪表盘",
+  "body": [
+    {
+      "type": "grid",
+      "className": "mb-4",
+      "columns": [
+        {
+          "lg": 3, "md": 6,
+          "body": {
+            "type": "service",
+            "api": "/api/v6/data/pm_project?skip=0&top=1&fields=_id",
+            "body": {
+              "type": "tpl",
+              "className": "p-4 bg-white rounded shadow text-center",
+              "tpl": "<div class='text-gray-500 text-sm'>项目总数</div><div class='text-3xl font-bold mt-2 text-blue-600'>${totalCount|default:0}</div>"
+            }
+          }
+        },
+        {
+          "lg": 3, "md": 6,
+          "body": {
+            "type": "service",
+            "api": "/api/v6/data/pm_task?skip=0&top=1&fields=_id&filters=%5B%5B%22status%22%2C%22%21%3D%22%2C%22completed%22%5D%5D",
+            "body": {
+              "type": "tpl",
+              "className": "p-4 bg-white rounded shadow text-center",
+              "tpl": "<div class='text-gray-500 text-sm'>未完成任务</div><div class='text-3xl font-bold mt-2 text-orange-500'>${totalCount|default:0}</div>"
+            }
+          }
+        },
+        {
+          "lg": 3, "md": 6,
+          "body": {
+            "type": "service",
+            "api": "/api/v6/data/pm_milestone?skip=0&top=1&fields=_id&filters=%5B%5B%22status%22%2C%22%21%3D%22%2C%22completed%22%5D%5D",
+            "body": {
+              "type": "tpl",
+              "className": "p-4 bg-white rounded shadow text-center",
+              "tpl": "<div class='text-gray-500 text-sm'>未完成里程碑</div><div class='text-3xl font-bold mt-2 text-purple-600'>${totalCount|default:0}</div>"
+            }
+          }
+        },
+        {
+          "lg": 3, "md": 6,
+          "body": {
+            "type": "service",
+            "api": "/api/v6/data/pm_timesheet?skip=0&top=1&fields=_id",
+            "body": {
+              "type": "tpl",
+              "className": "p-4 bg-white rounded shadow text-center",
+              "tpl": "<div class='text-gray-500 text-sm'>工时记录数</div><div class='text-3xl font-bold mt-2 text-green-600'>${totalCount|default:0}</div>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "className": "mb-4",
+      "columns": [
+        {
+          "lg": 6, "md": 12,
+          "body": {
+            "type": "panel",
+            "title": "项目状态分布",
+            "body": {
+              "type": "chart",
+              "api": {
+                "url": "/api/v6/data/pm_project?skip=0&top=200&fields=status",
+                "method": "get",
+                "adaptor": "var counts={}; (payload.data||[]).forEach(function(p){var s=p.status||'unknown'; counts[s]=(counts[s]||0)+1;}); var labelMap={planning:'规划中',in_progress:'进行中',completed:'已完成',closed:'已关闭',unknown:'未知'}; var data=Object.keys(counts).map(function(k){return {name:labelMap[k]||k, value:counts[k]};}); return {status:0, msg:'', data:{series:[{type:'pie', radius:'60%', data:data, label:{formatter:'{b}: {c} ({d}%)'}}], tooltip:{trigger:'item'}, legend:{orient:'vertical', left:'left'}}};"
+              }
+            }
+          }
+        },
+        {
+          "lg": 6, "md": 12,
+          "body": {
+            "type": "panel",
+            "title": "任务状态分布",
+            "body": {
+              "type": "chart",
+              "api": {
+                "url": "/api/v6/data/pm_task?skip=0&top=500&fields=status",
+                "method": "get",
+                "adaptor": "var counts={}; (payload.data||[]).forEach(function(t){var s=t.status||'unknown'; counts[s]=(counts[s]||0)+1;}); var labelMap={todo:'待办',in_progress:'进行中',completed:'已完成',cancelled:'已取消',unknown:'未知'}; var keys=Object.keys(counts); return {status:0, msg:'', data:{xAxis:{type:'category', data:keys.map(function(k){return labelMap[k]||k;})}, yAxis:{type:'value'}, series:[{type:'bar', data:keys.map(function(k){return counts[k];}), itemStyle:{color:'#3b82f6'}}], tooltip:{trigger:'axis'}}};"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "className": "mb-4",
+      "columns": [
+        {
+          "lg": 6, "md": 12,
+          "body": {
+            "type": "panel",
+            "title": "成员工时排行（Top 10）",
+            "body": {
+              "type": "chart",
+              "api": {
+                "url": "/api/v6/data/pm_timesheet?skip=0&top=1000&fields=user,hours",
+                "method": "get",
+                "adaptor": "var sums={}; (payload.data||[]).forEach(function(t){var u=(t.user&&(t.user.name||t.user._id))||'未知'; sums[u]=(sums[u]||0)+(t.hours||0);}); var arr=Object.keys(sums).map(function(k){return {name:k, hours:sums[k]};}).sort(function(a,b){return b.hours-a.hours;}).slice(0,10); return {status:0, msg:'', data:{xAxis:{type:'value'}, yAxis:{type:'category', data:arr.map(function(a){return a.name;}).reverse()}, series:[{type:'bar', data:arr.map(function(a){return a.hours;}).reverse(), itemStyle:{color:'#10b981'}}], tooltip:{trigger:'axis'}, grid:{left:80}}};"
+              }
+            }
+          }
+        },
+        {
+          "lg": 6, "md": 12,
+          "body": {
+            "type": "panel",
+            "title": "项目预算执行情况",
+            "body": {
+              "type": "chart",
+              "api": {
+                "url": "/api/v6/data/pm_project?skip=0&top=20&fields=name,budget,actual_cost",
+                "method": "get",
+                "adaptor": "var arr=(payload.data||[]); return {status:0, msg:'', data:{xAxis:{type:'category', data:arr.map(function(p){return p.name;}), axisLabel:{interval:0, rotate:30}}, yAxis:{type:'value'}, series:[{name:'预算', type:'bar', data:arr.map(function(p){return p.budget||0;}), itemStyle:{color:'#60a5fa'}}, {name:'实际成本', type:'bar', data:arr.map(function(p){return p.actual_cost||0;}), itemStyle:{color:'#f87171'}}], tooltip:{trigger:'axis'}, legend:{data:['预算','实际成本']}}};"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

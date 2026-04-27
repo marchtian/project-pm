@@ -1,0 +1,7 @@
+name: project
+label: 所属项目
+label_en: Project
+type: lookup
+reference_to: pm_project
+required: true
+indexed: true

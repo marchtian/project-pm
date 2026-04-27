@@ -1,0 +1,18 @@
+name: my_projects
+label: 我管理的项目
+label_en: My Projects
+columns:
+  - field: code
+  - field: name
+  - field: status
+  - field: start_date
+  - field: end_date
+  - field: budget
+  - field: actual_cost
+filters:
+  - - owner
+    - "="
+    - "{userId}"
+sort:
+  - field: created
+    order: desc

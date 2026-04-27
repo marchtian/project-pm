@@ -1,0 +1,7 @@
+name: work_date
+label: 工作日期
+label_en: Work Date
+type: date
+required: true
+indexed: true
+sortable: true

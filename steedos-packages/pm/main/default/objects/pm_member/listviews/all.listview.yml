@@ -1,0 +1,12 @@
+name: all
+label: 所有成员
+label_en: All Members
+columns:
+  - field: user
+  - field: project
+  - field: role
+  - field: join_date
+filter_scope: space
+sort:
+  - field: join_date
+    order: desc

@@ -1,0 +1,7 @@
+name: name
+label: 任务名称
+label_en: Name
+type: text
+required: true
+searchable: true
+sortable: true

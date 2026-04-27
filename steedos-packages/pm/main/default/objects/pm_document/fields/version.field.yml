@@ -1,0 +1,5 @@
+name: version
+label: 版本号
+label_en: Version
+type: text
+sortable: true

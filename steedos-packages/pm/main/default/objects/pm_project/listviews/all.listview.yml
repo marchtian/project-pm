@@ -1,0 +1,24 @@
+name: all
+label: 所有项目
+label_en: All Projects
+columns:
+  - field: code
+    width: 130
+  - field: name
+    width: 200
+  - field: status
+    width: 100
+  - field: owner
+    width: 120
+  - field: start_date
+    width: 110
+  - field: end_date
+    width: 110
+  - field: budget
+    width: 120
+  - field: actual_cost
+    width: 120
+filter_scope: space
+sort:
+  - field: created
+    order: desc

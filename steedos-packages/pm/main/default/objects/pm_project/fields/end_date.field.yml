@@ -1,0 +1,5 @@
+name: end_date
+label: 截止日期
+label_en: End Date
+type: date
+sortable: true

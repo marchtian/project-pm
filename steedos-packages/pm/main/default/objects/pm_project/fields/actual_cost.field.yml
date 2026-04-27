@@ -1,0 +1,9 @@
+name: actual_cost
+label: 实际成本
+label_en: Actual Cost
+type: summary
+summary_object: pm_expense
+summary_field: amount
+summary_type: sum
+reference_to_field: project
+description: 自动汇总该项目所有 pm_expense 的金额

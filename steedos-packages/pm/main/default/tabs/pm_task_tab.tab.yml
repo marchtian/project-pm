@@ -1,0 +1,8 @@
+name: pm_task_tab
+label: 任务
+label_en: Tasks
+type: object
+object: pm_task
+icon: task
+desktop: true
+mobile: true

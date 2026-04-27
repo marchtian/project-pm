@@ -1,0 +1,16 @@
+name: category
+label: 类别
+label_en: Category
+type: select
+required: true
+defaultValue: other
+options:
+  - label: 人力
+    value: labor
+  - label: 差旅
+    value: travel
+  - label: 采购
+    value: procurement
+  - label: 其他
+    value: other
+is_name: true

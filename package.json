@@ -1,0 +1,18 @@
+{
+  "name": "project-pm",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Project Management System based on Steedos",
+  "workspaces": [
+    "steedos-packages/*"
+  ],
+  "scripts": {
+    "start": "steedos start",
+    "build": "lerna run build",
+    "validate": "npx @steedos/validate steedos-packages/pm",
+    "build:gantt": "cd steedos-packages/pm/webapps/gantt && npm run build:amis"
+  },
+  "dependencies": {
+    "@steedos/server": "latest"
+  }
+}

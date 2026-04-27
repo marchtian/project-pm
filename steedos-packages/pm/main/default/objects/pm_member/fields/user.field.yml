@@ -1,0 +1,9 @@
+name: user
+label: 成员
+label_en: User
+type: lookup
+reference_to: users
+required: true
+indexed: true
+sortable: true
+is_name: true

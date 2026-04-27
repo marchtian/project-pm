@@ -1,0 +1,16 @@
+name: my_tasks
+label: 我的任务
+label_en: My Tasks
+columns:
+  - field: name
+  - field: project
+  - field: status
+  - field: priority
+  - field: due_date
+filters:
+  - - assignee
+    - "="
+    - "{userId}"
+sort:
+  - field: due_date
+    order: asc

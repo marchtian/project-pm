@@ -1,0 +1,4 @@
+/* gantt-task-react styles imported by component */
+.pm-gantt-wrap { width: 100%; min-height: 400px; }
+.pm-gantt-toolbar { display: flex; gap: 8px; padding: 8px; align-items: center; }
+.pm-gantt-empty { padding: 24px; color: #999; text-align: center; }

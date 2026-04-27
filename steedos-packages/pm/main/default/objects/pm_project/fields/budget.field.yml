@@ -1,0 +1,5 @@
+name: budget
+label: 预算金额
+label_en: Budget
+type: currency
+scale: 2

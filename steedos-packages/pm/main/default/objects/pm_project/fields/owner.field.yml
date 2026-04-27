@@ -1,0 +1,8 @@
+name: owner
+label: 项目经理
+label_en: Project Owner
+type: lookup
+reference_to: users
+required: true
+searchable: true
+index: true

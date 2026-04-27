@@ -1,0 +1,8 @@
+name: project
+label: 所属项目
+label_en: Project
+type: master_detail
+reference_to: pm_project
+required: true
+indexed: true
+sortable: true

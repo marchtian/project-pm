@@ -1,0 +1,16 @@
+name: status
+label: 状态
+label_en: Status
+type: select
+required: true
+defaultValue: not_started
+options:
+  - label: 未开始
+    label_en: Not Started
+    value: not_started
+  - label: 进行中
+    label_en: In Progress
+    value: in_progress
+  - label: 已完成
+    label_en: Completed
+    value: completed

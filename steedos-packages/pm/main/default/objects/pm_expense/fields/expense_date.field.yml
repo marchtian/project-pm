@@ -1,0 +1,6 @@
+name: expense_date
+label: 日期
+label_en: Expense Date
+type: date
+required: true
+sortable: true

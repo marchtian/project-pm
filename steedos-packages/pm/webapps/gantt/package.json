@@ -1,0 +1,29 @@
+{
+  "name": "@pm/gantt",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:amis": "vite build --config vite.amis.config.ts && rm -rf ../../public/gantt && cp -R dist/amis-renderer ../../public/gantt",
+    "build:all": "tsc -b && vite build && vite build --config vite.amis.config.ts && rm -rf ../../public/gantt && cp -R dist/amis-renderer ../../public/gantt"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "gantt-task-react": "^0.3.9",
+    "antd": "^5.16.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "autoprefixer": "^10.4.19",
+    "postcss-prefix-selector": "^2.1.0",
+    "terser": "^5.31.0"
+  }
+}

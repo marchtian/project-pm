@@ -1,0 +1,6 @@
+name: pm_overview
+label: 项目仪表盘
+type: app
+render_engine: amis
+is_active: true
+locked: false

@@ -1,0 +1,8 @@
+name: pm_document_tab
+label: 文档
+label_en: Documents
+type: object
+object: pm_document
+icon: file
+desktop: true
+mobile: true

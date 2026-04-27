@@ -1,0 +1,17 @@
+name: role
+label: 角色
+label_en: Role
+type: select
+required: true
+defaultValue: developer
+options:
+  - label: 项目经理
+    value: pm
+  - label: 开发
+    value: developer
+  - label: 测试
+    value: tester
+  - label: 设计
+    value: designer
+  - label: 观察者
+    value: observer

@@ -1,0 +1,17 @@
+name: category
+label: 类别
+label_en: Category
+type: select
+required: true
+defaultValue: other
+options:
+  - label: 需求
+    value: requirement
+  - label: 设计
+    value: design
+  - label: 测试
+    value: test
+  - label: 交付
+    value: delivery
+  - label: 其他
+    value: other

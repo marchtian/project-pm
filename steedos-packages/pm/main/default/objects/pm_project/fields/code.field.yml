@@ -1,0 +1,10 @@
+name: code
+label: 项目编号
+label_en: Project Code
+type: text
+readonly: true
+searchable: true
+sortable: true
+index: true
+unique: true
+description: 自动生成，格式 PM-YYYY-NNN（年内递增）

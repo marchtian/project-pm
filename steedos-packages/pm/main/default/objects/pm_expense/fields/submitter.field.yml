@@ -1,0 +1,6 @@
+name: submitter
+label: 提交人
+label_en: Submitter
+type: lookup
+reference_to: users
+indexed: true

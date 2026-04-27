@@ -1,0 +1,8 @@
+name: pm_milestone_tab
+label: 里程碑
+label_en: Milestones
+type: object
+object: pm_milestone
+icon: goals
+desktop: true
+mobile: true

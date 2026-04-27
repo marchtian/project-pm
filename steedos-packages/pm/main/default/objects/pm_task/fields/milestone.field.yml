@@ -1,0 +1,6 @@
+name: milestone
+label: 所属里程碑
+label_en: Milestone
+type: lookup
+reference_to: pm_milestone
+indexed: true

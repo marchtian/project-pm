@@ -1,0 +1,6 @@
+name: pm_manager
+label: 项目经理
+label_en: Project Manager
+license: free
+assigned_apps:
+  - pm_app

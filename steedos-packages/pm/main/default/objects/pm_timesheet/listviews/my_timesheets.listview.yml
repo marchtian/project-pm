@@ -1,0 +1,15 @@
+name: my_timesheets
+label: 我的工时
+label_en: My Timesheets
+columns:
+  - field: task
+  - field: project
+  - field: work_date
+  - field: hours
+filters:
+  - - user
+    - "="
+    - "{userId}"
+sort:
+  - field: work_date
+    order: desc

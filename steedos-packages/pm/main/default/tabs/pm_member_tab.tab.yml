@@ -1,0 +1,8 @@
+name: pm_member_tab
+label: 项目成员
+label_en: Members
+type: object
+object: pm_member
+icon: user
+desktop: true
+mobile: true

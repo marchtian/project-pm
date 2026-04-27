@@ -1,0 +1,6 @@
+name: pm_member
+label: 项目成员
+label_en: Project Member
+license: free
+assigned_apps:
+  - pm_app

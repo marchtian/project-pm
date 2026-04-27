@@ -1,0 +1,18 @@
+name: pm_expense
+label: 费用记录
+label_en: Expense
+icon: orders
+enable_search: true
+enable_files: true
+enable_tasks: false
+enable_notes: true
+enable_audit: true
+enable_share: true
+enable_chatter: true
+enable_trash: true
+enable_api: true
+enable_enhanced_lookup: true
+
+list_view_id: all
+fields_serial_number: 100
+NAME_FIELD_KEY: category

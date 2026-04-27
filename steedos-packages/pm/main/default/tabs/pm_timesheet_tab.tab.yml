@@ -1,0 +1,8 @@
+name: pm_timesheet_tab
+label: 工时
+label_en: Timesheet
+type: object
+object: pm_timesheet
+icon: event
+desktop: true
+mobile: true

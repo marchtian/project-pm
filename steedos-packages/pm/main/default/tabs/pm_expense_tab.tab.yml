@@ -1,0 +1,8 @@
+name: pm_expense_tab
+label: 费用
+label_en: Expenses
+type: object
+object: pm_expense
+icon: orders
+desktop: true
+mobile: true

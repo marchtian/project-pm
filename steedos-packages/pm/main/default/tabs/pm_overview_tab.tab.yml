@@ -1,0 +1,8 @@
+name: pm_overview_tab
+label: 仪表盘
+label_en: Dashboard
+type: page
+page: pm_overview
+icon: dashboard
+desktop: true
+mobile: true

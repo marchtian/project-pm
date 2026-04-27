@@ -1,0 +1,8 @@
+name: name
+label: 文档名称
+label_en: Name
+type: text
+required: true
+indexed: true
+sortable: true
+searchable: true

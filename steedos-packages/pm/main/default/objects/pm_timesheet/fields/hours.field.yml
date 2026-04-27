@@ -1,0 +1,7 @@
+name: hours
+label: 工时（小时）
+label_en: Hours
+type: number
+required: true
+scale: 2
+sortable: true

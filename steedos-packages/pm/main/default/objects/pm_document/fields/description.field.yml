@@ -1,0 +1,4 @@
+name: description
+label: 说明
+label_en: Description
+type: textarea
