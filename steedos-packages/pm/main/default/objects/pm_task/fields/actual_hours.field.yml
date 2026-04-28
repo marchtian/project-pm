@@ -2,6 +2,7 @@ name: actual_hours
 label: 实际工时
 label_en: Actual Hours
 type: summary
+data_type: number
 summary_object: pm_timesheet
 summary_field: hours
 summary_type: sum

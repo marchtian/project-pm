@@ -9,6 +9,7 @@ visible: true
 showSidebar: true
 mobile: true
 tabs:
+  - pm_overview_tab
   - pm_project_tab
   - pm_task_tab
   - pm_milestone_tab

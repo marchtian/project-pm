@@ -7,12 +7,30 @@
     "steedos-packages/*"
   ],
   "scripts": {
-    "start": "steedos start",
+    "start:db": "docker-compose up mongodb redis",
+    "start": "node_modules/steedos-cli/bin/run start",
     "build": "lerna run build",
     "validate": "npx @steedos/validate steedos-packages/pm",
     "build:gantt": "cd steedos-packages/pm/webapps/gantt && npm run build:amis"
   },
   "dependencies": {
-    "@steedos/server": "latest"
+    "@builder6/moleculer": "^4.0.0",
+    "@nestjs/common": "^11.1.9",
+    "@nestjs/core": "^11.1.9",
+    "@nestjs/microservices": "^11.1.9",
+    "@nestjs/platform-express": "^11.1.9",
+    "@nestjs/platform-socket.io": "^11.1.9",
+    "@nestjs/platform-ws": "^11.1.9",
+    "@nestjs/schedule": "^6.0.1",
+    "@nestjs/serve-static": "^5.0.4",
+    "@nestjs/swagger": "^11.2.3",
+    "@nestjs/websockets": "^11.1.9",
+    "@steedos/cli": "^1.1.15",
+    "@steedos/server": "^3.0",
+    "nestjs-pino": "^4.5.0",
+    "pino": "^10.3.1",
+    "pino-http": "^11.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
   }
 }

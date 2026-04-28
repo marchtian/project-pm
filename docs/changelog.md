@@ -8,8 +8,85 @@
 ## [Unreleased]
 
 ### 进行中
-- Phase 3 / 4 / 5 / 5b 已完成
-- 下一步：Phase 6 报表与仪表盘 + Phase 7 端到端验证
+- Phase 0（可启动脚手架，按 ADR-003 补做）已完成 — 服务已能成功 boot
+- 下一步：Phase 7 端到端验证（登录后逐对象 CRUD + 触发器 + 甘特图 + 仪表盘 + 三角色权限）
+
+---
+
+## Phase 0 完成（可启动脚手架，按 ADR-003 补做）— 2026-04-27
+
+### 背景
+按 [ADR-003](decisions/ADR-003-process-retro.md)，Phase 1-6 虽然 `@steedos/validate` 全部通过，但服务从未成功启动。本 Phase 专门补齐「能跑起来」这件事，并把它确立为后续 Phase 完成的前置条件。
+
+### 范围
+- 修复 `package.json`：补齐 `@steedos/server` 所需的 17 个运行时依赖（`@nestjs/*` 全套 + `@builder6/moleculer` + `nestjs-pino` + `pino*` + `reflect-metadata` + `rxjs`）
+- 修复 `start` 脚本：bypass `node_modules/.bin/steedos` symlink race —— 改为显式调用 `node_modules/steedos-cli/bin/run start`（unscoped v3.0.13，scoped `@steedos/cli` v1 没有 `start` 子命令）
+- 修复两个 summary 字段：`@steedos/validate` 没抓到的 runtime 必填项 `data_type`
+  - `pm_project/fields/actual_cost.field.yml` → 增加 `data_type: currency`
+  - `pm_task/fields/actual_hours.field.yml` → 增加 `data_type: number`
+- MongoDB / Redis 通过 docker-compose 启动（容器 `project-pm-mongodb-1`、`project-pm-redis-1`，db `project-pm`，redis db 1）
+
+### 验收结果
+- [x] `yarn install` 成功
+- [x] `yarn start:db` 起 MongoDB + Redis 容器
+- [x] `yarn start` 成功 boot：
+  - 日志出现 `🚀 Application is running on: http://localhost:5100`
+  - 所有 service 启动完成，含 `service @steedos-packages/pm started`
+  - 不再出现 `Invalid field type summary` BROKER 错误
+  - `curl http://localhost:5100/` 返回 HTTP 200
+- [x] `npx @steedos/validate steedos-packages/pm` → 0 errors, 0 warnings（沿用 Phase 6 状态）
+- [x] **Runtime 验证通过**（按 ADR-003 新标准，与 validate 通过明确区分）
+
+### 变更内容
+- Changed：`package.json` —— dependencies 从 2 个扩到 19 个；`start` 脚本从 `steedos start` 改为 `node_modules/steedos-cli/bin/run start`
+- Changed：`steedos-packages/pm/main/default/objects/pm_project/fields/actual_cost.field.yml` —— 增加 `data_type: currency`
+- Changed：`steedos-packages/pm/main/default/objects/pm_task/fields/actual_hours.field.yml` —— 增加 `data_type: number`
+
+### 已知问题
+- 启动期非致命 uncaughtException：`.steedos/.migrate` 文件 ENOENT（不影响 boot 完成，待后续观察是否需要预创建该目录）
+- 浏览器端 UI、登录、对象 CRUD 仍未验证 —— 留给 Phase 7
+
+### 经验教训（写入 ADR-003 已确认）
+- `@steedos/validate` 通过 ≠ 能跑起来：summary 字段缺 `data_type`、缺运行时依赖、错误的 start 脚本，validate 一律抓不到
+- 后续每个 Phase 完成必须同时满足：(1) validate 0/0；(2) 服务能 boot；(3) 本 Phase 涉及的 UI/触发器至少在浏览器跑过一次
+
+### 下一步
+- Phase 7 端到端冒烟：登录 → 项目管理 App → 7 个对象 CRUD → 触发器（编号生成 / 日期校验 / 工时 24h / 里程碑自动推进）→ 甘特图渲染与拖拽 → 仪表盘 → 三种角色权限（pm_manager / pm_member / pm_observer）
+
+---
+
+## Phase 6 完成（仪表盘）— 2026-04-27
+
+### 范围
+- 项目仪表盘页面 `pm_overview`（amis chart + service 实现，免去 questions/dashboards 元数据 schema 不确定的依赖）
+- 应用菜单加入「仪表盘」Tab
+
+### 验收结果
+- [x] `pages/pm_overview.page.yml`：type=app, render_engine=amis
+- [x] `pages/pm_overview.page.amis.json`：4 个 KPI（项目总数 / 未完成任务 / 未完成里程碑 / 工时记录数）+ 4 个 chart（项目状态饼图 / 任务状态柱图 / 成员工时 Top10 / 项目预算 vs 实际）
+- [x] 所有 `/api/v6/data/` 调用均带 `skip` & `top` 参数
+- [x] `tabs/pm_overview_tab.tab.yml`：type=page → 指向 `pm_overview`
+- [x] `applications/pm_app.app.yml`：仪表盘 Tab 置于首位
+- [x] `npx @steedos/validate steedos-packages/pm` → **92 files, 0 errors, 0 warnings**
+
+### 变更内容
+- Added：`pages/pm_overview.page.yml`、`pages/pm_overview.page.amis.json`
+- Added：`tabs/pm_overview_tab.tab.yml`
+- Changed：`applications/pm_app.app.yml`（tabs 列表加入 pm_overview_tab）
+
+### 设计决策
+- 选择 amis 页面（chart + service + adaptor）方案，而非原计划的 `.question.yml` + `.dashboard.yml` 元数据
+  - 原因：未找到 Steedos `.question.yml` / `.dashboard.yml` 的权威 schema 文档；amis chart 是已验证组件
+  - 优点：聚合逻辑写在 adaptor 内，无需后端聚合 API；后续若引入原生 questions，可平滑替换
+  - 取舍：聚合在前端进行，列表上限分别为 200/500/1000 条，超出需改造为后端聚合
+
+### 已知问题
+- 端到端 UI 渲染未跑：需启动 Steedos 服务登录后访问「项目管理」→「仪表盘」验证图表渲染与数据
+- `pm_timesheet.user` 在 adaptor 中按 `user.name || user._id` 取值，依赖列表 API 是否返回 expand 后的 user 对象；若仅返回 ID，则需调整为查 users 表或显示 ID
+- 大数据量场景下前端聚合性能不佳，需引入后端聚合接口或定时统计
+
+### 下一步
+- Phase 7：启动 Steedos 服务，端到端冒烟（对象 CRUD + 触发器 + 甘特图 + 仪表盘 + 三种角色权限）
 
 ---
 

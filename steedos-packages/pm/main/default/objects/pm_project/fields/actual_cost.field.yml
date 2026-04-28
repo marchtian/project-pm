@@ -2,6 +2,7 @@ name: actual_cost
 label: 实际成本
 label_en: Actual Cost
 type: summary
+data_type: currency
 summary_object: pm_expense
 summary_field: amount
 summary_type: sum
